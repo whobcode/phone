@@ -1,0 +1,18 @@
+{
+  "name": "phone-gateway",
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "hono": "^4.9.7"
+  },
+  "scripts": {
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy",
+    "test": "vitest run"
+  },
+  "devDependencies": {
+    "vitest": "^2.1.6",
+    "@cloudflare/vitest-pool-workers": "^0.8.70",
+    "wrangler": "^4.35.0"
+  }
+}

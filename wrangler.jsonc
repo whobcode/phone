@@ -1,0 +1,29 @@
+{
+  "name": "phone-gateway",
+  "main": "worker.ts",
+  "compatibility_date": "2024-09-01",
+  "d1_databases": [
+    { "binding": "DB", "database_name": "phone_db", "database_id": "<D1_DATABASE_ID>" }
+  ],
+  "durable_objects": {
+    "bindings": [
+      { "name": "RATE_LIMITER", "class_name": "RateLimiter" },
+      { "name": "TASKS", "class_name": "TasksDO" }
+    ]
+  },
+  "kv_namespaces": [
+    { "binding": "PHONE_CACHE", "id": "<KV_NAMESPACE_ID>" }
+  ],
+  "queues": {
+    "producers": [
+      { "binding": "PHONE_TASKS", "queue": "phone-tasks" }
+    ],
+    "consumers": [
+      { "queue": "phone-tasks" }
+    ]
+  },
+  "vars": {
+    "UPSTREAM_BASE_URL": "https://your-go-service.example.com",
+    "API_KEY": "replace-with-secret-token"
+  }
+}
